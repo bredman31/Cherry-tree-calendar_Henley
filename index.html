@@ -228,6 +228,7 @@
   <button id="prevDay" class="nav-btn">◀</button>
   <input id="date" type="date" />
   <button id="nextDay" class="nav-btn">▶</button>
+  <button id="todayBtn" class="nav-btn">Today</button>
   <span id="status" class="status">Idle</span>
 </div>
 
@@ -516,6 +517,13 @@
     const newISO = `${current.getFullYear()}-${pad2(current.getMonth() + 1)}-${pad2(current.getDate())}`;
     dateEl.value = newISO;
     scheduleLoad(newISO);
+  });
+
+  document.getElementById("todayBtn").addEventListener("click", () => {
+    const now = new Date();
+    const todayISO = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
+    dateEl.value = todayISO;
+    scheduleLoad(todayISO);
   });
 
   loadDay(todayISO);
